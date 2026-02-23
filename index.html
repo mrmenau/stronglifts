@@ -1,442 +1,426 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="sv">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.3">
-  <style type="text/css">
-    body {background-color: #0d121f}
-    span.s1 {font-kerning: none}
+  <meta charset="UTF-8" />
+  <title>Stronglifts 5x5</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- PWA-manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#111827" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+    .app {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    h1 {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .sub {
+      font-size: 14px;
+      text-align: center;
+      color: #9ca3af;
+      margin-bottom: 16px;
+    }
+    .pass-toggle {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .pass-button {
+      flex: 1;
+      padding: 10px 0;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: #111827;
+      color: #e5e7eb;
+      font-size: 15px;
+    }
+    .pass-button.active {
+      background: #22c55e;
+      color: #111827;
+      border-color: #22c55e;
+      font-weight: 600;
+    }
+    .card {
+      background: #020617;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #1f2937;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+    .exercise-name {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .exercise-meta {
+      font-size: 13px;
+      color: #9ca3af;
+    }
+    .weight-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .weight-label {
+      font-size: 14px;
+      color: #9ca3af;
+    }
+    .weight-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .weight-value {
+      min-width: 60px;
+      text-align: center;
+      font-size: 16px;
+    }
+    .btn-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      background: #111827;
+      color: #e5e7eb;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-circle:active {
+      background: #1f2937;
+    }
+    .sets-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .set-pill {
+      flex: 1;
+      min-width: 40px;
+      padding: 6px 0;
+      text-align: center;
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      font-size: 14px;
+      background: #020617;
+      color: #e5e7eb;
+    }
+    .set-pill.done {
+      background: #22c55e;
+      color: #111827;
+      border-color: #22c55e;
+      font-weight: 600;
+    }
+    .footer-actions {
+      margin-top: 16px;
+      display: flex;
+      gap: 8px;
+    }
+    .footer-button {
+      flex: 1;
+      padding: 12px 0;
+      border-radius: 999px;
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .footer-button.primary {
+      background: #22c55e;
+      color: #111827;
+    }
+    .footer-button.secondary {
+      background: #111827;
+      color: #e5e7eb;
+      border: 1px solid #4b5563;
+    }
+    .info {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #6b7280;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1">&lt;!DOCTYPE html&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1">&lt;html lang="sv"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1">&lt;head&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;Stronglifts 5x5&lt;/title&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">  </span>&lt;!-- PWA-manifest --&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">  </span>&lt;link rel="manifest" href="manifest.json" /&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta name="theme-color" content="#111827" /&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">  </span>&lt;style&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>body {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>background: #0f172a;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>color: #e5e7eb;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.app {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>max-width: 480px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0 auto;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>padding: 16px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>h1 {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 24px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>text-align: center;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>margin-bottom: 8px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.sub {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 14px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>text-align: center;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>color: #9ca3af;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>margin-bottom: 16px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.pass-toggle {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>gap: 8px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>margin-bottom: 16px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.pass-button {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>flex: 1;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>padding: 10px 0;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 999px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>border: 1px solid #374151;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>background: #111827;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>color: #e5e7eb;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 15px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.pass-button.active {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>background: #22c55e;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>color: #111827;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>border-color: #22c55e;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: 600;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.card {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>background: #020617;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 12px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>padding: 12px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>margin-bottom: 12px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>border: 1px solid #1f2937;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.card-header {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>justify-content: space-between;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>align-items: baseline;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>margin-bottom: 8px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.exercise-name {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: 600;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 16px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.exercise-meta {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 13px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>color: #9ca3af;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.weight-row {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>align-items: center;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>justify-content: space-between;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>margin-bottom: 8px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.weight-label {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 14px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>color: #9ca3af;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.weight-controls {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>align-items: center;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>gap: 8px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.weight-value {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>min-width: 60px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>text-align: center;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 16px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.btn-circle {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>width: 28px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>height: 28px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 999px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>border: 1px solid #4b5563;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>background: #111827;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>color: #e5e7eb;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 18px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>align-items: center;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>justify-content: center;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.btn-circle:active {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>background: #1f2937;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.sets-row {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>gap: 6px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.set-pill {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>flex: 1;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>min-width: 40px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>padding: 6px 0;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>text-align: center;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 999px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>border: 1px solid #4b5563;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 14px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>background: #020617;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>color: #e5e7eb;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.set-pill.done {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>background: #22c55e;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>color: #111827;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>border-color: #22c55e;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: 600;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.footer-actions {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>margin-top: 16px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>gap: 8px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.footer-button {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>flex: 1;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>padding: 12px 0;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 999px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>border: none;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 15px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: 600;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.footer-button.primary {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>background: #22c55e;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>color: #111827;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.footer-button.secondary {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>background: #111827;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>color: #e5e7eb;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>border: 1px solid #4b5563;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>.info {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>margin-top: 12px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 12px;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>color: #6b7280;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>text-align: center;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1">&lt;/head&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1">&lt;body&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="app"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Stronglifts 5×5&lt;/h1&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="sub"&gt;Välj pass, markera set, justera vikter&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="pass-toggle"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button id="btn-pass-a" class="pass-button"&gt;Pass A&lt;/button&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button id="btn-pass-b" class="pass-button"&gt;Pass B&lt;/button&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="exercise-list"&gt;&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="footer-actions"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button id="btn-reset" class="footer-button secondary"&gt;Återställ set&lt;/button&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button id="btn-complete" class="footer-button primary"&gt;Slutför pass&lt;/button&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="info"&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>Appen sparar vikter, set och senaste pass lokalt på varje telefon.</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>// ----- Konfiguration -----</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>const WORKOUTS = {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>A: [</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>{ id: 'squat', name: 'Knäböj', sets: 5, reps: 5 },</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>{ id: 'bench', name: 'Bänkpress', sets: 5, reps: 5 },</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>{ id: 'row', <span class="Apple-converted-space">  </span>name: 'Skivstångsrodd', sets: 5, reps: 5 },</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>],</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>B: [</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>{ id: 'squat',<span class="Apple-converted-space">  </span>name: 'Knäböj', sets: 5, reps: 5 },</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>{ id: 'ohp',<span class="Apple-converted-space">    </span>name: 'Militärpress', sets: 5, reps: 5 },</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>{ id: 'dead', <span class="Apple-converted-space">  </span>name: 'Marklyft', sets: 1, reps: 5 },</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>],</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>};</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>const DEFAULT_WEIGHTS = {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>squat: 20,</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>bench: 20,</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>row: <span class="Apple-converted-space">  </span>20,</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>ohp: <span class="Apple-converted-space">  </span>20,</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>dead:<span class="Apple-converted-space">  </span>40,</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>};</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>const INCREMENTS = {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>default: 2.5,</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>dead: 5,</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>};</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>const STORAGE_KEY_STATE = 'sl5x5_state_v1';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>let state = {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>currentPass: 'A',</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>weights: { ...DEFAULT_WEIGHTS },</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>setsDone: {}, // ex: { 'A_squat': [true,false,...] }</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>};</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>// ----- Laddning/sparning -----</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>function loadState() {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>try {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const raw = localStorage.getItem(STORAGE_KEY_STATE);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>if (raw) {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>const parsed = JSON.parse(raw);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>state = {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">            </span>...state,</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">            </span>...parsed,</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">            </span>weights: { ...DEFAULT_WEIGHTS, ...(parsed.weights || {}) },</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">            </span>setsDone: parsed.setsDone || {},</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>};</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>} catch (e) {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>console.error('Kunde inte läsa state', e);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>function saveState() {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>try {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>localStorage.setItem(STORAGE_KEY_STATE, JSON.stringify(state));</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>} catch (e) {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>console.error('Kunde inte spara state', e);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>// ----- UI -----</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>const exerciseListEl = document.getElementById('exercise-list');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>const btnPassA = document.getElementById('btn-pass-a');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>const btnPassB = document.getElementById('btn-pass-b');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>const btnReset = document.getElementById('btn-reset');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>const btnComplete = document.getElementById('btn-complete');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>function render() {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>// Markera aktivt pass</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>btnPassA.classList.toggle('active', state.currentPass === 'A');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>btnPassB.classList.toggle('active', state.currentPass === 'B');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>// Rendera övningar</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>exerciseListEl.innerHTML = '';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>const workout = WORKOUTS[state.currentPass];</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>workout.forEach(ex =&gt; {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const card = document.createElement('div');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>card.className = 'card';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const header = document.createElement('div');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>header.className = 'card-header';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const nameEl = document.createElement('div');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>nameEl.className = 'exercise-name';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>nameEl.textContent = ex.name;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const metaEl = document.createElement('div');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>metaEl.className = 'exercise-meta';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>metaEl.textContent = `${ex.sets}×${ex.reps}`;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>header.appendChild(nameEl);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>header.appendChild(metaEl);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const weightRow = document.createElement('div');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>weightRow.className = 'weight-row';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const weightLabel = document.createElement('div');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>weightLabel.className = 'weight-label';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>weightLabel.textContent = 'Vikt (kg)';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const weightControls = document.createElement('div');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>weightControls.className = 'weight-controls';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const minusBtn = document.createElement('button');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>minusBtn.className = 'btn-circle';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>minusBtn.textContent = '−';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>minusBtn.addEventListener('click', () =&gt; {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>state.weights[ex.id] = Math.max(0, (state.weights[ex.id] || 0) - 2.5);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>saveState();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>render();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>});</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const weightValue = document.createElement('div');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>weightValue.className = 'weight-value';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>weightValue.textContent = (state.weights[ex.id] ?? 0).toFixed(1).replace('.0','');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const plusBtn = document.createElement('button');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>plusBtn.className = 'btn-circle';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>plusBtn.textContent = '+';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>plusBtn.addEventListener('click', () =&gt; {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>state.weights[ex.id] = (state.weights[ex.id] || 0) + 2.5;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>saveState();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>render();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>});</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>weightControls.appendChild(minusBtn);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>weightControls.appendChild(weightValue);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>weightControls.appendChild(plusBtn);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>weightRow.appendChild(weightLabel);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>weightRow.appendChild(weightControls);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const setsRow = document.createElement('div');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>setsRow.className = 'sets-row';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const key = `${state.currentPass}_${ex.id}`;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const doneArray = state.setsDone[key] || Array(ex.sets).fill(false);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>doneArray.forEach((done, index) =&gt; {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>const pill = document.createElement('button');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>pill.className = 'set-pill' + (done ? ' done' : '');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>pill.textContent = (index + 1).toString();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>pill.addEventListener('click', () =&gt; {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">            </span>const updated = [...doneArray];</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">            </span>updated[index] = !updated[index];</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">            </span>state.setsDone[key] = updated;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">            </span>saveState();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">            </span>render();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>});</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>setsRow.appendChild(pill);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>});</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>card.appendChild(header);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>card.appendChild(weightRow);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>card.appendChild(setsRow);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>exerciseListEl.appendChild(card);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>});</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>function resetSets() {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>const workout = WORKOUTS[state.currentPass];</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>workout.forEach(ex =&gt; {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const key = `${state.currentPass}_${ex.id}`;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>delete state.setsDone[key];</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>});</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>saveState();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>render();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>function completeWorkout() {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>const workout = WORKOUTS[state.currentPass];</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>// Kolla om alla set är klara för varje övning</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>let allCompleted = true;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>workout.forEach(ex =&gt; {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const key = `${state.currentPass}_${ex.id}`;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>const doneArray = state.setsDone[key] || Array(ex.sets).fill(false);</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>if (!doneArray.every(Boolean)) {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>allCompleted = false;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>});</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>// Progression: öka vikter om alla set klara</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>if (allCompleted) {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>workout.forEach(ex =&gt; {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>const inc = ex.id === 'dead' ? INCREMENTS.dead : INCREMENTS.default;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>state.weights[ex.id] = (state.weights[ex.id] || 0) + inc;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>});</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>// Nollställ set för aktuellt pass</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>resetSets();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>// Växla automatiskt A &lt;-&gt; B</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>state.currentPass = state.currentPass === 'A' ? 'B' : 'A';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>saveState();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>render();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>alert(allCompleted ? 'Pass klart! Vikterna har ökats där alla set var klara.' : 'Pass slutfört. Några set var ej klara, vikter oförändrade.');</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>// Event-bindningar</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>btnPassA.addEventListener('click', () =&gt; {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>state.currentPass = 'A';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>saveState();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>render();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>});</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>btnPassB.addEventListener('click', () =&gt; {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>state.currentPass = 'B';</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>saveState();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>render();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>});</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>btnReset.addEventListener('click', () =&gt; {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>if (confirm('Återställ alla set för aktuellt pass?')) {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>resetSets();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>});</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>btnComplete.addEventListener('click', () =&gt; {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>completeWorkout();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>});</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>// Init</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>loadState();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>render();</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d; min-height: 33.0px"><span class="s1"></span><br></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>// Registrera service worker för PWA</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>if ('serviceWorker' in navigator) {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>window.addEventListener('load', () =&gt; {</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">        </span>navigator.serviceWorker.register('./service-worker.js')</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">          </span>.catch(err =&gt; console.error('SW error', err));</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">      </span>});</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">    </span>}</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1">&lt;/body&gt;</span></h1>
-<h1 style="margin: 0.0px 0.0px 10.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #31aff7; background-color: #171e2d"><span class="s1">&lt;/html&gt;</span></h1>
+  <div class="app">
+    <h1>Stronglifts 5×5</h1>
+    <div class="sub">Välj pass, markera set, justera vikter</div>
+
+    <div class="pass-toggle">
+      <button id="btn-pass-a" class="pass-button">Pass A</button>
+      <button id="btn-pass-b" class="pass-button">Pass B</button>
+    </div>
+
+    <div id="exercise-list"></div>
+
+    <div class="footer-actions">
+      <button id="btn-reset" class="footer-button secondary">Återställ set</button>
+      <button id="btn-complete" class="footer-button primary">Slutför pass</button>
+    </div>
+
+    <div class="info">
+      Appen sparar vikter, set och senaste pass lokalt på varje telefon.
+    </div>
+  </div>
+
+  <script>
+    // ----- Konfiguration -----
+    const WORKOUTS = {
+      A: [
+        { id: 'squat', name: 'Knäböj', sets: 5, reps: 5 },
+        { id: 'bench', name: 'Bänkpress', sets: 5, reps: 5 },
+        { id: 'row',   name: 'Skivstångsrodd', sets: 5, reps: 5 },
+      ],
+      B: [
+        { id: 'squat',  name: 'Knäböj', sets: 5, reps: 5 },
+        { id: 'ohp',    name: 'Militärpress', sets: 5, reps: 5 },
+        { id: 'dead',   name: 'Marklyft', sets: 1, reps: 5 },
+      ],
+    };
+
+    const DEFAULT_WEIGHTS = {
+      squat: 20,
+      bench: 20,
+      row:   20,
+      ohp:   20,
+      dead:  40,
+    };
+
+    const INCREMENTS = {
+      default: 2.5,
+      dead: 5,
+    };
+
+    const STORAGE_KEY_STATE = 'sl5x5_state_v1';
+
+    let state = {
+      currentPass: 'A',
+      weights: { ...DEFAULT_WEIGHTS },
+      setsDone: {}, // ex: { 'A_squat': [true,false,...] }
+    };
+
+    // ----- Laddning/sparning -----
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY_STATE);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          state = {
+            ...state,
+            ...parsed,
+            weights: { ...DEFAULT_WEIGHTS, ...(parsed.weights || {}) },
+            setsDone: parsed.setsDone || {},
+          };
+        }
+      } catch (e) {
+        console.error('Kunde inte läsa state', e);
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY_STATE, JSON.stringify(state));
+      } catch (e) {
+        console.error('Kunde inte spara state', e);
+      }
+    }
+
+    // ----- UI -----
+    const exerciseListEl = document.getElementById('exercise-list');
+    const btnPassA = document.getElementById('btn-pass-a');
+    const btnPassB = document.getElementById('btn-pass-b');
+    const btnReset = document.getElementById('btn-reset');
+    const btnComplete = document.getElementById('btn-complete');
+
+    function render() {
+      // Markera aktivt pass
+      btnPassA.classList.toggle('active', state.currentPass === 'A');
+      btnPassB.classList.toggle('active', state.currentPass === 'B');
+
+      // Rendera övningar
+      exerciseListEl.innerHTML = '';
+      const workout = WORKOUTS[state.currentPass];
+
+      workout.forEach(ex => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        const header = document.createElement('div');
+        header.className = 'card-header';
+
+        const nameEl = document.createElement('div');
+        nameEl.className = 'exercise-name';
+        nameEl.textContent = ex.name;
+
+        const metaEl = document.createElement('div');
+        metaEl.className = 'exercise-meta';
+        metaEl.textContent = `${ex.sets}×${ex.reps}`;
+
+        header.appendChild(nameEl);
+        header.appendChild(metaEl);
+
+        const weightRow = document.createElement('div');
+        weightRow.className = 'weight-row';
+
+        const weightLabel = document.createElement('div');
+        weightLabel.className = 'weight-label';
+        weightLabel.textContent = 'Vikt (kg)';
+
+        const weightControls = document.createElement('div');
+        weightControls.className = 'weight-controls';
+
+        const minusBtn = document.createElement('button');
+        minusBtn.className = 'btn-circle';
+        minusBtn.textContent = '−';
+        minusBtn.addEventListener('click', () => {
+          state.weights[ex.id] = Math.max(0, (state.weights[ex.id] || 0) - 2.5);
+          saveState();
+          render();
+        });
+
+        const weightValue = document.createElement('div');
+        weightValue.className = 'weight-value';
+        weightValue.textContent = (state.weights[ex.id] ?? 0).toFixed(1).replace('.0','');
+
+        const plusBtn = document.createElement('button');
+        plusBtn.className = 'btn-circle';
+        plusBtn.textContent = '+';
+        plusBtn.addEventListener('click', () => {
+          state.weights[ex.id] = (state.weights[ex.id] || 0) + 2.5;
+          saveState();
+          render();
+        });
+
+        weightControls.appendChild(minusBtn);
+        weightControls.appendChild(weightValue);
+        weightControls.appendChild(plusBtn);
+
+        weightRow.appendChild(weightLabel);
+        weightRow.appendChild(weightControls);
+
+        const setsRow = document.createElement('div');
+        setsRow.className = 'sets-row';
+
+        const key = `${state.currentPass}_${ex.id}`;
+        const doneArray = state.setsDone[key] || Array(ex.sets).fill(false);
+
+        doneArray.forEach((done, index) => {
+          const pill = document.createElement('button');
+          pill.className = 'set-pill' + (done ? ' done' : '');
+          pill.textContent = (index + 1).toString();
+          pill.addEventListener('click', () => {
+            const updated = [...doneArray];
+            updated[index] = !updated[index];
+            state.setsDone[key] = updated;
+            saveState();
+            render();
+          });
+          setsRow.appendChild(pill);
+        });
+
+        card.appendChild(header);
+        card.appendChild(weightRow);
+        card.appendChild(setsRow);
+
+        exerciseListEl.appendChild(card);
+      });
+    }
+
+    function resetSets() {
+      const workout = WORKOUTS[state.currentPass];
+      workout.forEach(ex => {
+        const key = `${state.currentPass}_${ex.id}`;
+        delete state.setsDone[key];
+      });
+      saveState();
+      render();
+    }
+
+    function completeWorkout() {
+      const workout = WORKOUTS[state.currentPass];
+
+      // Kolla om alla set är klara för varje övning
+      let allCompleted = true;
+      workout.forEach(ex => {
+        const key = `${state.currentPass}_${ex.id}`;
+        const doneArray = state.setsDone[key] || Array(ex.sets).fill(false);
+        if (!doneArray.every(Boolean)) {
+          allCompleted = false;
+        }
+      });
+
+      // Progression: öka vikter om alla set klara
+      if (allCompleted) {
+        workout.forEach(ex => {
+          const inc = ex.id === 'dead' ? INCREMENTS.dead : INCREMENTS.default;
+          state.weights[ex.id] = (state.weights[ex.id] || 0) + inc;
+        });
+      }
+
+      // Nollställ set för aktuellt pass
+      resetSets();
+
+      // Växla automatiskt A <-> B
+      state.currentPass = state.currentPass === 'A' ? 'B' : 'A';
+
+      saveState();
+      render();
+      alert(allCompleted ? 'Pass klart! Vikterna har ökats där alla set var klara.' : 'Pass slutfört. Några set var ej klara, vikter oförändrade.');
+    }
+
+    // Event-bindningar
+    btnPassA.addEventListener('click', () => {
+      state.currentPass = 'A';
+      saveState();
+      render();
+    });
+
+    btnPassB.addEventListener('click', () => {
+      state.currentPass = 'B';
+      saveState();
+      render();
+    });
+
+    btnReset.addEventListener('click', () => {
+      if (confirm('Återställ alla set för aktuellt pass?')) {
+        resetSets();
+      }
+    });
+
+    btnComplete.addEventListener('click', () => {
+      completeWorkout();
+    });
+
+    // Init
+    loadState();
+    render();
+
+    // Registrera service worker för PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .catch(err => console.error('SW error', err));
+      });
+    }
+  </script>
 </body>
 </html>
