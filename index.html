@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <title>Stronglifts 5x5</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- PWA-manifest -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#111827" />
-
   <style>
     body {
       margin: 0;
@@ -183,7 +180,6 @@
   </div>
 
   <script>
-    // ----- Konfiguration -----
     const WORKOUTS = {
       A: [
         { id: 'squat', name: 'Knäböj', sets: 5, reps: 5 },
@@ -215,10 +211,9 @@
     let state = {
       currentPass: 'A',
       weights: { ...DEFAULT_WEIGHTS },
-      setsDone: {}, // ex: { 'A_squat': [true,false,...] }
+      setsDone: {},
     };
 
-    // ----- Laddning/sparning -----
     function loadState() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY_STATE);
@@ -244,7 +239,6 @@
       }
     }
 
-    // ----- UI -----
     const exerciseListEl = document.getElementById('exercise-list');
     const btnPassA = document.getElementById('btn-pass-a');
     const btnPassB = document.getElementById('btn-pass-b');
@@ -252,11 +246,9 @@
     const btnComplete = document.getElementById('btn-complete');
 
     function render() {
-      // Markera aktivt pass
       btnPassA.classList.toggle('active', state.currentPass === 'A');
       btnPassB.classList.toggle('active', state.currentPass === 'B');
 
-      // Rendera övningar
       exerciseListEl.innerHTML = '';
       const workout = WORKOUTS[state.currentPass];
 
@@ -357,9 +349,8 @@
 
     function completeWorkout() {
       const workout = WORKOUTS[state.currentPass];
-
-      // Kolla om alla set är klara för varje övning
       let allCompleted = true;
+
       workout.forEach(ex => {
         const key = `${state.currentPass}_${ex.id}`;
         const doneArray = state.setsDone[key] || Array(ex.sets).fill(false);
@@ -368,7 +359,6 @@
         }
       });
 
-      // Progression: öka vikter om alla set klara
       if (allCompleted) {
         workout.forEach(ex => {
           const inc = ex.id === 'dead' ? INCREMENTS.dead : INCREMENTS.default;
@@ -376,10 +366,7 @@
         });
       }
 
-      // Nollställ set för aktuellt pass
       resetSets();
-
-      // Växla automatiskt A <-> B
       state.currentPass = state.currentPass === 'A' ? 'B' : 'A';
 
       saveState();
@@ -387,7 +374,6 @@
       alert(allCompleted ? 'Pass klart! Vikterna har ökats där alla set var klara.' : 'Pass slutfört. Några set var ej klara, vikter oförändrade.');
     }
 
-    // Event-bindningar
     btnPassA.addEventListener('click', () => {
       state.currentPass = 'A';
       saveState();
@@ -410,11 +396,9 @@
       completeWorkout();
     });
 
-    // Init
     loadState();
     render();
 
-    // Registrera service worker för PWA
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./service-worker.js')
