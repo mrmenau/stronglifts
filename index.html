@@ -32,7 +32,7 @@
     .pass-toggle {
       display: flex;
       gap: 8px;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
     .pass-button {
       flex: 1;
@@ -48,6 +48,24 @@
       color: #111827;
       border-color: #22c55e;
       font-weight: 600;
+    }
+    .global-timer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #9ca3af;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: #020617;
+    }
+    .global-timer-label {
+      font-weight: 500;
+    }
+    .global-timer-value {
+      font-variant-numeric: tabular-nums;
     }
     .card {
       background: #020617;
@@ -74,7 +92,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .weight-label {
       font-size: 14px;
@@ -167,6 +185,11 @@
       <button id="btn-pass-b" class="pass-button">Pass B</button>
     </div>
 
+    <div id="global-timer" style="display:none;" class="global-timer">
+      <div class="global-timer-label" id="global-timer-label"></div>
+      <div class="global-timer-value" id="global-timer-value">00:00</div>
+    </div>
+
     <div id="exercise-list"></div>
 
     <div class="footer-actions">
@@ -175,7 +198,7 @@
     </div>
 
     <div class="info">
-      Appen sparar vikter, reps och senaste pass lokalt på varje telefon.
+      Appen sparar vikter, reps och senaste pass lokalt på varje telefon. Timern är bara visuell och sparas inte.
     </div>
   </div>
 
@@ -206,14 +229,29 @@
       dead: 5,
     };
 
-    const STORAGE_KEY_STATE = 'sl5x5_state_v3';
+    const STORAGE_KEY_STATE = 'sl5x5_state_v5';
 
-    // Per set: repsLeft = kvarvarande reps, marked = om setet är "påbörjat"
+    // repsState: per set (repsLeft, marked)
     let state = {
       currentPass: 'A',
       weights: { ...DEFAULT_WEIGHTS },
-      repsState: {}, // t.ex. { 'A_squat': [ {repsLeft:5, marked:false}, ... ] }
+      repsState: {}, // { 'A_squat': [ {repsLeft, marked}, ... ] }
     };
+
+    // Global vilotimer (ej persistent)
+    let timerActive = false;
+    let timerStartTime = null;
+    let timerExerciseKey = null; // t.ex. "A_squat"
+    let timerIntervalId = null;
+
+    const exerciseListEl = document.getElementById('exercise-list');
+    const btnPassA = document.getElementById('btn-pass-a');
+    const btnPassB = document.getElementById('btn-pass-b');
+    const btnReset = document.getElementById('btn-reset');
+    const btnComplete = document.getElementById('btn-complete');
+    const globalTimerEl = document.getElementById('global-timer');
+    const globalTimerLabelEl = document.getElementById('global-timer-label');
+    const globalTimerValueEl = document.getElementById('global-timer-value');
 
     function loadState() {
       try {
@@ -240,14 +278,7 @@
       }
     }
 
-    const exerciseListEl = document.getElementById('exercise-list');
-    const btnPassA = document.getElementById('btn-pass-a');
-    const btnPassB = document.getElementById('btn-pass-b');
-    const btnReset = document.getElementById('btn-reset');
-    const btnComplete = document.getElementById('btn-complete');
-
     function getRepsArray(key, ex) {
-      // Initiera om det inte finns: alla set = 5 reps kvar, markerade = false
       if (!state.repsState[key]) {
         state.repsState[key] = Array(ex.sets).fill(null).map(() => ({
           repsLeft: ex.reps,
@@ -257,6 +288,56 @@
       return state.repsState[key];
     }
 
+    function formatSeconds(sec) {
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      const mm = m.toString().padStart(2, '0');
+      const ss = s.toString().padStart(2, '0');
+      return `${mm}:${ss}`;
+    }
+
+    function updateGlobalTimerDisplay() {
+      if (!timerActive || timerStartTime === null || !timerExerciseKey) {
+        globalTimerEl.style.display = 'none';
+        return;
+      }
+      const [passId, exId] = timerExerciseKey.split('_');
+      const workout = WORKOUTS[passId];
+      const ex = workout.find(e => e.id === exId);
+      const elapsedSec = Math.floor((Date.now() - timerStartTime) / 1000);
+      globalTimerLabelEl.textContent = `Vila – ${ex ? ex.name : ''}`;
+      globalTimerValueEl.textContent = formatSeconds(elapsedSec);
+      globalTimerEl.style.display = 'flex';
+    }
+
+    function startTimerForExercise(exerciseKey) {
+      timerExerciseKey = exerciseKey;
+      timerStartTime = Date.now();
+      timerActive = true;
+      updateGlobalTimerDisplay();
+
+      if (timerIntervalId === null) {
+        timerIntervalId = setInterval(() => {
+          if (!timerActive) {
+            clearInterval(timerIntervalId);
+            timerIntervalId = null;
+            return;
+          }
+          updateGlobalTimerDisplay();
+        }, 1000);
+      }
+    }
+
+    function stopTimer() {
+      timerActive = false;
+      timerStartTime = null;
+      timerExerciseKey = null;
+      updateGlobalTimerDisplay();
+      if (timerIntervalId !== null) {
+        clearInterval(timerIntervalId);
+        timerIntervalId = null;
+      }
+    }
     function render() {
       btnPassA.classList.toggle('active', state.currentPass === 'A');
       btnPassB.classList.toggle('active', state.currentPass === 'B');
@@ -329,7 +410,6 @@
 
         repsArray.forEach((setState, index) => {
           const pill = document.createElement('button');
-          // Grön om setet är markerat (oavsett om repsLeft är 5,4,3,2,1,0)
           pill.className = 'set-pill' + (setState.marked ? ' done' : '');
           pill.textContent = setState.repsLeft.toString();
 
@@ -338,11 +418,25 @@
             const current = arr[index];
 
             if (!current.marked) {
-              // Första klick: markera setet, behåll 5
+              // Första klick: markera setet (grön), behåll 5 reps.
               current.marked = true;
+
+              // Starta global timer för denna övning (första setet klart)
+              startTimerForExercise(key);
             } else {
               // Nästa klick: minska reps ned till 0
-              current.repsLeft = Math.max(0, current.repsLeft - 1);
+              if (current.repsLeft > 0) {
+                current.repsLeft = current.repsLeft - 1;
+              }
+
+              // Om övningen inte är helt klar, starta om timern
+              const allFinished = arr.every(s => s.marked && s.repsLeft === 0);
+              if (!allFinished) {
+                startTimerForExercise(key);
+              } else {
+                // Övningen klar: stoppa timer helt
+                stopTimer();
+              }
             }
 
             saveState();
@@ -358,6 +452,8 @@
 
         exerciseListEl.appendChild(card);
       });
+
+      updateGlobalTimerDisplay();
     }
 
     function resetSets() {
@@ -366,6 +462,7 @@
         const key = `${state.currentPass}_${ex.id}`;
         delete state.repsState[key];
       });
+      stopTimer();
       saveState();
       render();
     }
@@ -377,8 +474,6 @@
       workout.forEach(ex => {
         const key = `${state.currentPass}_${ex.id}`;
         const repsArray = getRepsArray(key, ex);
-        // För progression: alla set måste ha repsLeft == ex.reps (dvs 5)
-        // och vara markerade, annars ingen vikthöjning.
         if (!repsArray.every(s => s.marked && s.repsLeft === ex.reps)) {
           allCompleted = false;
         }
@@ -401,12 +496,14 @@
 
     btnPassA.addEventListener('click', () => {
       state.currentPass = 'A';
+      stopTimer();
       saveState();
       render();
     });
 
     btnPassB.addEventListener('click', () => {
       state.currentPass = 'B';
+      stopTimer();
       saveState();
       render();
     });
