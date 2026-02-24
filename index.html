@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <title>Stronglifts 5x5</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- PWA-manifest -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#111827" />
-
   <style>
     body {
       margin: 0;
@@ -183,7 +180,6 @@
   </div>
 
   <script>
-    // ----- Konfiguration -----
     const WORKOUTS = {
       A: [
         { id: 'squat', name: 'Knäböj', sets: 5, reps: 5 },
@@ -210,13 +206,13 @@
       dead: 5,
     };
 
-    const STORAGE_KEY_STATE = 'sl5x5_state_v2';
+    const STORAGE_KEY_STATE = 'sl5x5_state_v3';
 
+    // Per set: repsLeft = kvarvarande reps, marked = om setet är "påbörjat"
     let state = {
       currentPass: 'A',
       weights: { ...DEFAULT_WEIGHTS },
-      // repsLeft: { 'A_squat': [5,5,5,5,5], ... }
-      repsLeft: {},
+      repsState: {}, // t.ex. { 'A_squat': [ {repsLeft:5, marked:false}, ... ] }
     };
 
     function loadState() {
@@ -228,7 +224,7 @@
             ...state,
             ...parsed,
             weights: { ...DEFAULT_WEIGHTS, ...(parsed.weights || {}) },
-            repsLeft: parsed.repsLeft || {},
+            repsState: parsed.repsState || {},
           };
         }
       } catch (e) {
@@ -250,12 +246,21 @@
     const btnReset = document.getElementById('btn-reset');
     const btnComplete = document.getElementById('btn-complete');
 
+    function getRepsArray(key, ex) {
+      // Initiera om det inte finns: alla set = 5 reps kvar, markerade = false
+      if (!state.repsState[key]) {
+        state.repsState[key] = Array(ex.sets).fill(null).map(() => ({
+          repsLeft: ex.reps,
+          marked: false,
+        }));
+      }
+      return state.repsState[key];
+    }
+
     function render() {
-      // Markera aktivt pass
       btnPassA.classList.toggle('active', state.currentPass === 'A');
       btnPassB.classList.toggle('active', state.currentPass === 'B');
 
-      // Rendera övningar
       exerciseListEl.innerHTML = '';
       const workout = WORKOUTS[state.currentPass];
 
@@ -320,19 +325,30 @@
         setsRow.className = 'sets-row';
 
         const key = `${state.currentPass}_${ex.id}`;
-        const repsArray = state.repsLeft[key] || Array(ex.sets).fill(ex.reps);
+        const repsArray = getRepsArray(key, ex);
 
-        repsArray.forEach((reps, index) => {
+        repsArray.forEach((setState, index) => {
           const pill = document.createElement('button');
-          pill.className = 'set-pill' + (reps === 0 ? ' done' : '');
-          pill.textContent = reps.toString();
+          // Grön om setet är markerat (oavsett om repsLeft är 5,4,3,2,1,0)
+          pill.className = 'set-pill' + (setState.marked ? ' done' : '');
+          pill.textContent = setState.repsLeft.toString();
+
           pill.addEventListener('click', () => {
-            const updated = [...repsArray];
-            updated[index] = Math.max(0, updated[index] - 1);
-            state.repsLeft[key] = updated;
+            const arr = getRepsArray(key, ex);
+            const current = arr[index];
+
+            if (!current.marked) {
+              // Första klick: markera setet, behåll 5
+              current.marked = true;
+            } else {
+              // Nästa klick: minska reps ned till 0
+              current.repsLeft = Math.max(0, current.repsLeft - 1);
+            }
+
             saveState();
             render();
           });
+
           setsRow.appendChild(pill);
         });
 
@@ -348,7 +364,7 @@
       const workout = WORKOUTS[state.currentPass];
       workout.forEach(ex => {
         const key = `${state.currentPass}_${ex.id}`;
-        delete state.repsLeft[key];
+        delete state.repsState[key];
       });
       saveState();
       render();
@@ -360,8 +376,10 @@
 
       workout.forEach(ex => {
         const key = `${state.currentPass}_${ex.id}`;
-        const repsArray = state.repsLeft[key] || Array(ex.sets).fill(ex.reps);
-        if (!repsArray.every(r => r === 0)) {
+        const repsArray = getRepsArray(key, ex);
+        // För progression: alla set måste ha repsLeft == ex.reps (dvs 5)
+        // och vara markerade, annars ingen vikthöjning.
+        if (!repsArray.every(s => s.marked && s.repsLeft === ex.reps)) {
           allCompleted = false;
         }
       });
@@ -378,7 +396,7 @@
 
       saveState();
       render();
-      alert(allCompleted ? 'Pass klart! Vikterna har ökats där alla set var klara.' : 'Pass slutfört. Några set var ej klara, vikter oförändrade.');
+      alert(allCompleted ? 'Pass klart! Alla set hade 5 reps, vikterna har ökats.' : 'Pass slutfört. Något set hade färre än 5 reps, vikter oförändrade.');
     }
 
     btnPassA.addEventListener('click', () => {
