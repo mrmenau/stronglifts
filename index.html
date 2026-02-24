@@ -4,8 +4,11 @@
   <meta charset="UTF-8" />
   <title>Stronglifts 5x5</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- PWA-manifest -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#111827" />
+
   <style>
     body {
       margin: 0;
@@ -160,7 +163,7 @@
 <body>
   <div class="app">
     <h1>Stronglifts 5×5</h1>
-    <div class="sub">Välj pass, markera set, justera vikter</div>
+    <div class="sub">Välj pass, markera reps, justera vikter</div>
 
     <div class="pass-toggle">
       <button id="btn-pass-a" class="pass-button">Pass A</button>
@@ -175,11 +178,12 @@
     </div>
 
     <div class="info">
-      Appen sparar vikter, set och senaste pass lokalt på varje telefon.
+      Appen sparar vikter, reps och senaste pass lokalt på varje telefon.
     </div>
   </div>
 
   <script>
+    // ----- Konfiguration -----
     const WORKOUTS = {
       A: [
         { id: 'squat', name: 'Knäböj', sets: 5, reps: 5 },
@@ -206,12 +210,13 @@
       dead: 5,
     };
 
-    const STORAGE_KEY_STATE = 'sl5x5_state_v1';
+    const STORAGE_KEY_STATE = 'sl5x5_state_v2';
 
     let state = {
       currentPass: 'A',
       weights: { ...DEFAULT_WEIGHTS },
-      setsDone: {},
+      // repsLeft: { 'A_squat': [5,5,5,5,5], ... }
+      repsLeft: {},
     };
 
     function loadState() {
@@ -223,7 +228,7 @@
             ...state,
             ...parsed,
             weights: { ...DEFAULT_WEIGHTS, ...(parsed.weights || {}) },
-            setsDone: parsed.setsDone || {},
+            repsLeft: parsed.repsLeft || {},
           };
         }
       } catch (e) {
@@ -246,9 +251,11 @@
     const btnComplete = document.getElementById('btn-complete');
 
     function render() {
+      // Markera aktivt pass
       btnPassA.classList.toggle('active', state.currentPass === 'A');
       btnPassB.classList.toggle('active', state.currentPass === 'B');
 
+      // Rendera övningar
       exerciseListEl.innerHTML = '';
       const workout = WORKOUTS[state.currentPass];
 
@@ -313,16 +320,16 @@
         setsRow.className = 'sets-row';
 
         const key = `${state.currentPass}_${ex.id}`;
-        const doneArray = state.setsDone[key] || Array(ex.sets).fill(false);
+        const repsArray = state.repsLeft[key] || Array(ex.sets).fill(ex.reps);
 
-        doneArray.forEach((done, index) => {
+        repsArray.forEach((reps, index) => {
           const pill = document.createElement('button');
-          pill.className = 'set-pill' + (done ? ' done' : '');
-          pill.textContent = (index + 1).toString();
+          pill.className = 'set-pill' + (reps === 0 ? ' done' : '');
+          pill.textContent = reps.toString();
           pill.addEventListener('click', () => {
-            const updated = [...doneArray];
-            updated[index] = !updated[index];
-            state.setsDone[key] = updated;
+            const updated = [...repsArray];
+            updated[index] = Math.max(0, updated[index] - 1);
+            state.repsLeft[key] = updated;
             saveState();
             render();
           });
@@ -341,7 +348,7 @@
       const workout = WORKOUTS[state.currentPass];
       workout.forEach(ex => {
         const key = `${state.currentPass}_${ex.id}`;
-        delete state.setsDone[key];
+        delete state.repsLeft[key];
       });
       saveState();
       render();
@@ -353,8 +360,8 @@
 
       workout.forEach(ex => {
         const key = `${state.currentPass}_${ex.id}`;
-        const doneArray = state.setsDone[key] || Array(ex.sets).fill(false);
-        if (!doneArray.every(Boolean)) {
+        const repsArray = state.repsLeft[key] || Array(ex.sets).fill(ex.reps);
+        if (!repsArray.every(r => r === 0)) {
           allCompleted = false;
         }
       });
